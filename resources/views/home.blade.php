@@ -61,7 +61,7 @@
                 @foreach($images as $image)
 
                     <div class="col-md-3">
-                        <a href="{{$image->image_url}}">
+                        <a href="{{$image->image_url}}" target="_blank">
                             <img src="{{asset('uploads/'.$image->image_name)}}" class="img-responsive" alt="{{$image->image_name}}">
                         </a>
                     </div>
