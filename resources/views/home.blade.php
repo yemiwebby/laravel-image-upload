@@ -5,6 +5,7 @@
     <title>Cloudinary Image Upload</title>
     <meta name="description" content="Prego is a project management app built for learning purposes">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
 
@@ -24,14 +25,14 @@
 
 
 
-<div class="container" style="margin-top: 70px;">
-    <div class="">
+<div class="container" style="margin-top: 100px;">
+    <div class="row">
         <h4 class="text-center">
             Upload Images
         </h4>
 
         <div class="row">
-            <div class="col-md-4 col-md-offset-4">
+            <div id="formWrapper" class="col-md-4 col-md-offset-4">
                 <form class="form-vertical" role="form" enctype="multipart/form-data" method="post" action="{{ route('uploadImage')  }}">
                     {{csrf_field()}}
                     @if(session()->has('status'))
@@ -55,16 +56,15 @@
         </div>
 
 
-        <div class="row">
+        <div class="row" id="displayImages">
             @if($images)
                 @foreach($images as $image)
 
                     <div class="col-md-3">
                         <a href="{{$image->image_url}}">
-                            <img src="{{asset('images/'.$image->image_name)}}" class="img-responsive" alt="{{$image->image_name}}">
+                            <img src="{{asset('uploads/'.$image->image_name)}}" class="img-responsive" alt="{{$image->image_name}}">
                         </a>
                     </div>
-
                 @endforeach
             @endif
         </div>

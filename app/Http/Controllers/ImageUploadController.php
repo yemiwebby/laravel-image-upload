@@ -22,6 +22,10 @@ class ImageUploadController extends Controller
             'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 5000',
         ]);
 
+        $image = $request->file('image_name');
+
+        $name = $request->file('image_name')->getClientOriginalName();
+
 
         $image_name = $request->file('image_name')->getRealPath();;
 
@@ -31,6 +35,10 @@ class ImageUploadController extends Controller
 
         $image_url= Cloudder::show(Cloudder::getPublicId(), ["width" => $width, "height"=>$height]);
 
+        //save to uploads directory
+        $image->move(public_path("uploads"), $name);
+
+        //Save images
         $this->saveImages($request, $image_url);
 
         return redirect()->back()->with('status', 'Image Uploaded Successfully');
