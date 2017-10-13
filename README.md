@@ -1,2 +1,2 @@
-## Imo Schools Project
+## Cloudinary Article
 Uploading Images to Cloudinary Using Laravel
