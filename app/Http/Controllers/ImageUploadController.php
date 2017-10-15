@@ -19,7 +19,7 @@ class ImageUploadController extends Controller
     public function uploadImages(Request $request)
     {
         $this->validate($request,[
-            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 5000',
+            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
         ]);
 
         $image = $request->file('image_name');
